@@ -510,7 +510,7 @@ local function parseseq(line, lines, indent)
     end
     local rest = ssub(line, j+1)
 
-    if sfind(rest, '^[^\'\"%s]*:') then
+    if sfind(rest, '^[^\'\"%s]*:%s') then
       -- Inline nested hash
       local indent2 = j
       lines[1] = string.rep(' ', indent2)..rest
