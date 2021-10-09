@@ -24,4 +24,4 @@ jobs:
           luarocks install luassert
 
       - name: run test
-        run: busted spec/
+        run: busted -m "?.lua" spec/

@@ -10,6 +10,7 @@ local sfind, smatch = string.find, string.match
 local tinsert, tconcat, tremove = table.insert, table.concat, table.remove
 local setmetatable = setmetatable
 local pairs = pairs
+local rawget = rawget
 local type = type
 local tonumber = tonumber
 local math = math
@@ -247,10 +248,10 @@ local function compactifyemptylines(lines)
 end
 
 local function checkdupekey(map, key)
-  if map[key] ~= nil then
+  if rawget(map, key) ~= nil then
     -- print("found a duplicate key '"..key.."' in line: "..line)
     local suffix = 1
-    while map[key..'_'..suffix] do
+    while rawget(map, key..'_'..suffix) do
       suffix = suffix + 1
     end
     key = key ..'_'..suffix

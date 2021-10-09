@@ -151,4 +151,16 @@ busted.describe("map", function()
         ]])
       )
   end)
+
+  busted.it("map with magic word", function()
+    assert.same(
+        {
+          def = 1
+        },
+        yaml.parse([[
+          def: 1
+        ]])
+      )
+  end)
+
 end)
