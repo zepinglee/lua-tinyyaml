@@ -35,9 +35,6 @@ jobs:
               echo "commit format is not correct"
               exit 1
           fi
-          if [ ! -e rockspec/api7-lua-tinyyaml-${withoutv}-0.rockspec ]; then
-              exit 1
-          fi
 
       - name: Create Release
         uses: actions/create-release@v1
