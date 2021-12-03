@@ -381,6 +381,11 @@ local function parseblockstylestring(line, lines, indent)
   else
     error('invalid blockstyle string:'..line)
   end
+
+  if #s == 0 then
+    return ""
+  end
+
   local _, eonl = s[#s]:gsub('\n', '\n')
   s[#s] = rtrim(s[#s])
   if striptrailing then
