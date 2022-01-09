@@ -199,6 +199,11 @@ local function parsestring(line, stopper)
       return nil, line
     end
   end
+
+  if line == "*" then
+    error("did not find expected alphabetic or numeric character")
+  end
+
   local buf = ''
   while #line > 0 do
     local c = ssub(line, 1, 1)
@@ -588,6 +593,8 @@ local function parseseq(line, lines, indent)
         local indent2 = countindent(nextline)
         tinsert(seq, parsemap('', lines, indent2))
       end
+    elseif line == "*" then
+      error("did not find expected alphabetic or numeric character")
     elseif rest then
       -- Array entry with a value
       tremove(lines, 1)

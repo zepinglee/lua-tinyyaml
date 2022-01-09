@@ -36,4 +36,17 @@ busted.describe("seq", function()
       ]])
     )
   end)
+
+  busted.it("seq bad alias syntax:", function()
+    assert.has_error(
+      function()
+        yaml.parse([[
+          anchor_value: &anchor "schema"
+          vars:
+          - *
+        ]])
+      end,
+      "did not find expected alphabetic or numeric character"
+    )
+  end)
 end)

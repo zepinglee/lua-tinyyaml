@@ -65,5 +65,23 @@ busted.describe("duplicate keys", function()
         ]])
       )
     end)
+
+    busted.it("bad alias syntax", function()
+      assert.has_error(
+        function()
+          yaml.parse([[
+            anchor_value: &anchor "schema"
+            map:
+              Fruit   : *
+              Fruit_1 : orange
+              Fruit   : banana
+              Vegetable   : celery
+              Vegetable_1 : cucumber
+              Vegetable   : broccoli
+          ]])
+        end,
+        "did not find expected alphabetic or numeric character"
+      )
+    end)
   end)
 end)

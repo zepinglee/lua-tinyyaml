@@ -159,4 +159,15 @@ busted.describe("string", function()
       ]])
     )
   end)
+
+  busted.it("string: bad alias syntax", function()
+    assert.has_error(
+      function()
+        yaml.parse([[
+          value: *
+        ]])
+      end,
+      "did not find expected alphabetic or numeric character"
+    )
+  end)
 end)
