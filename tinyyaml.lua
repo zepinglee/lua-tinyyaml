@@ -16,6 +16,8 @@ local tonumber = tonumber
 local math = math
 local getmetatable = getmetatable
 local error = error
+local end_symbol = "..."
+local end_break_symbol = "...\n"
 
 local UNESCAPES = {
   ['0'] = "\x00", z = "\x00", N    = "\x85",
@@ -680,6 +682,13 @@ function Parser:parsemap(line, lines, indent)
   while #lines > 0 do
     -- Check for a new document
     line = lines[1]
+    if line == end_symbol or line == end_break_symbol then
+      for i, _ in ipairs(lines) do
+        lines[i] = nil
+      end
+      return map
+    end
+
     if startswith(line, '---') then
       while #lines > 0 and not startswith(lines, '---') do
         tremove(lines, 1)
