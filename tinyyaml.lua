@@ -163,7 +163,14 @@ function Parser:parsestring(line, stopper)
     if not i then
       return nil, line
     end
-    return ssub(line, 2, i-1), ssub(line, i+1)
+    -- Unescape repeated single quotes.
+    while i < #line and ssub(line, i+1, i+1) == "'" do
+      i = sfind(line, "'", i + 2, true)
+      if not i then
+        return nil, line
+      end
+    end
+    return ssub(line, 2, i-1):gsub("''", "'"), ssub(line, i+1)
   end
   if q == '"' then
     local i, buf = 2, ''

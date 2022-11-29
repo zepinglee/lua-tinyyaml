@@ -170,4 +170,15 @@ busted.describe("string", function()
       "did not find expected alphabetic or numeric character"
     )
   end)
+
+  busted.it("string: escaped single quotes", function()
+    assert.same(
+      {
+        ["single-quoted"] = "here's to \"quotes\""
+      },
+      yaml.parse([[
+        single-quoted: 'here''s to "quotes"'
+      ]])
+    )
+  end)
 end)
