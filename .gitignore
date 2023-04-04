@@ -1,3 +1,9 @@
+*.curlopt
+build/
+lua-tinyyaml-ctan.zip
+lua-tinyyaml.pdf
+lua-tinyyaml/
+
 # Compiled Lua sources
 luac.out
 

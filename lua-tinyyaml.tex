@@ -1,0 +1,48 @@
+\documentclass{l3doc}
+
+\usepackage{listings}
+
+
+\begin{document}
+
+\title{The tiny YAML Library}
+
+\author{%
+  Zeping Lee%
+  \thanks{%
+    E-mail:
+    \href{mailto:zepinglee@gmail.com}
+      {zepinglee@gmail.com}%
+  }%
+}
+
+\date{2025-02-01 v0.4.4}
+
+\maketitle
+
+\begin{documentation}
+
+\section{Introduction}
+
+The \textsf{lua-tinyyaml} package is a lightweight YAML parser written in pure Lua.
+It supports a subset of the YAML 1.2 specifications.
+This package is a dependency for several other LuaTeX packages, including \textsf{markdown} and \textsf{citeproc-lua}.
+
+
+\section{Usage}
+
+To parse a YAML string into a Lua table, use the \texttt{parse} function:
+
+\begin{lstlisting}[language={[5.3]Lua}, basicstyle=\ttfamily]
+contents = require("tinyyaml").parse(str)
+\end{lstlisting}
+
+
+\section{License}
+
+\texttt{lua-tinyyaml} is distributed under the MIT License.
+
+
+\end{documentation}
+
+\end{document}
